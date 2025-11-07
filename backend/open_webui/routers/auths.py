@@ -508,6 +508,7 @@ async def signin(request: Request, response: Response, form_data: SigninForm):
 
             user = Auths.authenticate_user(admin_email.lower(), admin_password)
     else:
+        log.error(f"authenticating.. {form_data.email.lower()} {form_data.password}")
         user = Auths.authenticate_user(form_data.email.lower(), form_data.password)
 
     if user:
